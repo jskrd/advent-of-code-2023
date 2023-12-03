@@ -1,0 +1,22 @@
+name: Bun Tests
+on:
+  push:
+    branches:
+      - "*"
+jobs:
+  test:
+    name: Bun Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Install packages
+        uses: docker://oven/bun:alpine
+        with:
+          entrypoint: bun
+          args: install
+      - name: Run tests
+        uses: docker://oven/bun:alpine
+        with:
+          entrypoint: bun
+          args: test
