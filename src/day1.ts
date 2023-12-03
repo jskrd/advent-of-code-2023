@@ -22,7 +22,7 @@ export function solvePart1(input: string): number {
     .reduce((sum: number, number: number): number => sum + number);
 }
 
-export function solvePart2(input: string): any {
+export function solvePart2(input: string): number {
   return input
     .split("\n")
     .map((line: string): number => {
