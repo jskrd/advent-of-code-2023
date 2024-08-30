@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/jskrd/advent-of-code-2023/internal/day01"
 )
 
 type Puzzle struct {
@@ -10,7 +12,9 @@ type Puzzle struct {
 }
 
 func main() {
-	puzzles := []Puzzle{}
+	puzzles := []Puzzle{
+		{"Day 1: Trebuchet?!", day01.Solve},
+	}
 
 	for i, puzzle := range puzzles {
 		part1, part2 := puzzle.Solution()
