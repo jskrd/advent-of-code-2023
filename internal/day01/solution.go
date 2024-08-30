@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func Solve() (string, string) {
+func Solve() (int, int) {
 	dat, err := os.ReadFile("internal/day01/input.txt")
 	if err != nil {
 		panic(err)
@@ -18,7 +18,7 @@ func Solve() (string, string) {
 	return SolvePart1(&input), SolvePart2(&input)
 }
 
-func SolvePart1(input *string) string {
+func SolvePart1(input *string) int {
 	sum := 0
 	for _, line := range strings.Split(*input, "\n") {
 		var first rune
@@ -41,10 +41,10 @@ func SolvePart1(input *string) string {
 		sum += number
 	}
 
-	return strconv.Itoa(sum)
+	return sum
 }
 
-func SolvePart2(input *string) string {
+func SolvePart2(input *string) int {
 	digits := map[string]rune{
 		"zero":  '0',
 		"one":   '1',
@@ -87,5 +87,5 @@ func SolvePart2(input *string) string {
 		sum += number
 	}
 
-	return strconv.Itoa(sum)
+	return sum
 }

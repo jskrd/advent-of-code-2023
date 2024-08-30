@@ -8,7 +8,7 @@ import (
 
 type Puzzle struct {
 	Name     string
-	Solution func() (string, string)
+	Solution func() (int, int)
 }
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 
 	for i, puzzle := range puzzles {
 		part1, part2 := puzzle.Solution()
-		fmt.Printf("%s\n  Part One: %s\n  Part Two: %s\n", puzzle.Name, part1, part2)
+		fmt.Printf("%s\n  Part One: %d\n  Part Two: %d\n", puzzle.Name, part1, part2)
 
 		if i < len(puzzles)-1 {
 			fmt.Println()
