@@ -4,7 +4,12 @@
 
 ```sh
 $ go run cmd/aoc/main.go
+
 Day 1: Trebuchet?!
   Part One: 53651
   Part Two: 53894
+
+Day 2: Cube Conundrum
+  Part One: 2377
+  Part Two: 71220
 ```
