@@ -7,19 +7,29 @@ import (
 )
 
 func Solve() (int, int) {
-	dat, err := os.ReadFile("internal/day02/input.txt")
+	data, err := os.ReadFile("internal/day02/input.txt")
 	if err != nil {
 		panic(err)
 	}
 
-	input := string(dat)
+	lines := strings.Split(string(data), "\n")
 
-	return SolvePart1(&input), SolvePart2(&input)
+	part1Result := make(chan int)
+	part2Result := make(chan int)
+
+	go func() {
+		part1Result <- SolvePart1(&lines)
+	}()
+	go func() {
+		part2Result <- SolvePart2(&lines)
+	}()
+
+	return <-part1Result, <-part2Result
 }
 
-func SolvePart1(input *string) int {
+func SolvePart1(lines *[]string) int {
 	sum := 0
-	for _, line := range strings.Split(*input, "\n") {
+	for _, line := range *lines {
 		info := strings.Split(line, ": ")
 		game, rounds := info[0], info[1]
 
@@ -55,9 +65,9 @@ func SolvePart1(input *string) int {
 	return sum
 }
 
-func SolvePart2(input *string) int {
+func SolvePart2(lines *[]string) int {
 	sum := 0
-	for _, line := range strings.Split(*input, "\n") {
+	for _, line := range *lines {
 		info := strings.Split(line, ": ")
 
 		var red, green, blue int
